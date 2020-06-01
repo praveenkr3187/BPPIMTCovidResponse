@@ -79,9 +79,7 @@
 
   .buttons{
       height: 80vh;
-      width: 100%;
-      align-self: center;
-      align-items: auto center;
+    
       z-index: 3;
   }
   
@@ -121,8 +119,8 @@
   
   @media(max-width:960px){
     .container{
-        padding-right: 3rem;
-        padding-left: 3rem;
+        padding-right: 0;
+        padding-left: 0;
     }
   
     .line{
