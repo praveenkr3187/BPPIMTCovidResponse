@@ -54,7 +54,7 @@ getData3.done(function(data){
     var ctxa = document.getElementById('a').getContext('2d');
     var charta = new Chart(ctxa, {
         // The type of chart we want to create
-        type: 'doughnut',
+        type: 'pie',
         // The data for our dataset
         data: {
             labels: data.fIKeys,
@@ -75,7 +75,7 @@ getData3.done(function(data){
     var ctxb = document.getElementById('b').getContext('2d');
     var chartb = new Chart(ctxb, {
         // The type of chart we want to create
-        type: 'doughnut',
+        type: 'pie',
         // The data for our dataset
         data: {
             labels: data.fIMKeys,
@@ -96,7 +96,7 @@ getData3.done(function(data){
     var ctxc = document.getElementById('c').getContext('2d');
     var chartc = new Chart(ctxc, {
         // The type of chart we want to create
-        type: 'doughnut',
+        type: 'pie',
         // The data for our dataset
         data: {
             labels: data.uSKeys,
@@ -115,7 +115,7 @@ getData3.done(function(data){
     var ctxd = document.getElementById('d').getContext('2d');
     var chartd = new Chart(ctxd, {
         // The type of chart we want to create
-        type: 'doughnut',
+        type: 'pie',
         // The data for our dataset
         data: {
             labels: data.uSMKeys,
