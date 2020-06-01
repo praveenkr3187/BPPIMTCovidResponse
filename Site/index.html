@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <div class="hamburger">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+        </div>
+        <ul class="navlinks">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="#">Analysis</a></li>
+        </ul>
+    </nav>
+
+    <header class='vidheader container'>
+        <div class='fullscreenvid'>
+            <video autoplay muted loop id="myVideo">
+                <source src="res/covid.mp4" type="video/mp4">
+            </video>
+        </div>
+        <div class="headeroverlay"></div>
+        <div class="headercontent">
+            <a href="#" class="btn">See analysis</a>
+        </div>
+    </header>
+    <section class="section section-a">
+        <h1>About the project</h1>
+        <p>We've to identify the human factors which contributes to covid spread. We have collected data of multiple factors which might be contributing to 'covid' spread. We are eliminating the factors which are not responsible by Exploratory data analysis and feature engineering and using those factors predicting the hotspots.
+        </p>
+        <iframe class="youtube"
+        src="https://www.youtube.com/embed/JvYPx7FkouU">
+        </iframe>
+    </section>
+</body>
+<script type="text/javascript"  src="app.js" charset="utf-8"></script>
+
+</html>
