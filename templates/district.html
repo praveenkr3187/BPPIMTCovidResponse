@@ -10,7 +10,7 @@
   <section class="container">
 
 
-  <form action="/dis" method="POST">
+  <form action="/district" method="POST">
     <div class="form-group">
       <label for="sel1">Select District:</label>
       <select class="form-control" id="sel1" name="district">
@@ -21,6 +21,15 @@
 </div>
 
 </section>
+<section class="border border-primary">
+  <section class="container-fluid text-center bg-faded my-4">
+      This is a Bar Graph of Selected District with diffrent index<br>
+  </section>
+  <section class="container">
+      <canvas id="disdis" ></canvas>
+  </section>
+  </section>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
   <script src="{{ url_for('static', filename='s2.js') }}"></script>
+  <script src="{{ url_for('static', filename='s3.js') }}"></script>
 {% endblock %}

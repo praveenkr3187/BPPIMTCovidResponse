@@ -21,13 +21,9 @@ def index():
 @app.route('/favicon.ico')
 def favicon():
     return url_for('static', filename='favicon.ico')
-
-@app.route('/district',methods=['GET','POST'])
-def district():
-    return render_template('district.html')
 a=[]
-@app.route('/dis',methods=['GET','POST'])
-def dis(df=dataframe2):
+@app.route('/district',methods=['GET','POST'])
+def district(df=dataframe2):
     if request.method == 'POST':
         district= request.form['district']
         d=df.loc[df['District'] == district]
@@ -35,9 +31,8 @@ def dis(df=dataframe2):
         a.clear()
         for index, rows in d.iterrows():
             a+=[rows.Density,rows.Workplaces,rows.Residential,rows.Retail,rows.Grocery,rows.Parks,rows.Stations,rows['Air quality'],rows['Water accessibility'],rows['Thermal anomalies'],rows.Confirmed,rows.Active]
-        return render_template('dis.html')
-    else:
-        return 'error'
+    return render_template('district.html')
+
 @app.route('/disj')
 def disj(di=a):
     return jsonify({'a' : di})
