@@ -26,6 +26,10 @@ def contact():
 def analysis():
     return render_template('analysis.html')
 
+@app.route('/regression')
+def regression():
+    return "this page is coming soon"
+
 @app.route('/favicon.ico')
 def favicon():
     return url_for('static', filename='favicon.ico')
