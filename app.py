@@ -142,7 +142,7 @@ def getChartData():
     #univariate selection for mobility factors 
     uSMKeys = ['Workplaces', 'Residential', 'Retail', 'Grocery', 'Parks', 'Stations']
     uSMValues = [0.09273469257182483,23.506595629105053,1.2686150850584141,2.8919863541195197,/
-    0.1988008603787625,2.8880402443913873]
+    0.1988008603787625,2.8880402443913873]s
     
 
 if __name__ == '__main__':
