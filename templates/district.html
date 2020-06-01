@@ -7,9 +7,7 @@
 
 
 
-  <section class="container text-center py-5">
-
-
+<section class="container text-center py-5">
   <form action="/district" method="POST">
     <div class="form-group">
       <label for="sel1">Select District:</label>
@@ -19,16 +17,68 @@
     <input type="submit" class="btn btn-warning" value="Show">
   </form>
 </div>
-
 </section>
+
 <section class="border border-primary">
   <section class="container-fluid text-center bg-faded my-4">
       This is a Bar Graph of Selected District with diffrent index<br>
   </section>
   <section class="container">
-      <canvas id="disdis" ></canvas>
+      <canvas id="disj" ></canvas>
   </section>
   </section>
+
+
+<section class="py-5">
+  <div class="container text-center">
+    <div class="row">
+      <div class="col">
+        <canvas id="a" ></canvas>
+      </div>
+      <div class="col">
+        Why do we use it?
+It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
+      </div>
+    </div>
+  </div>
+
+  <div class="container text-center py-5">
+    <div class="row">
+      <div class="col">
+       Why do we use it?
+It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
+      </div>
+      <div class="col">
+        <canvas id="b" ></canvas>
+      </div>
+    </div>
+  </div>
+
+  <div class="container text-center py-5">
+    <div class="row">
+      <div class="col">
+        <canvas id="c" ></canvas>
+      </div>
+      <div class="col">
+       Why do we use it?
+It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
+      </div>
+    </div>
+  </div>
+  <div class="container text-center py-5">
+    <div class="row">
+      <div class="col">
+        Why do we use it?
+It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
+      </div>
+      <div class="col">
+        <canvas id="d" ></canvas>
+      </div>
+    </div>
+  </div>
+</section>
+
+
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
   <script src="{{ url_for('static', filename='s2.js') }}"></script>
 {% endblock %}

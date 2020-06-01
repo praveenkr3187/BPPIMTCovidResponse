@@ -4,9 +4,9 @@ for(var i=0;i<692;i++){
     document.getElementById("sel1").innerHTML += '<option value="'+df2.district[i]+'">'+df2.district[i]+'</option>';
 }
 });
-var getData = $.get('/disj');
-getData.done(function(disj){
-    var ctx = document.getElementById('disdis').getContext('2d');
+var getData2 = $.get('/disj');
+getData2.done(function(disj){
+    var ctx = document.getElementById('disj').getContext('2d');
     var chart = new Chart(ctx, {
         // The type of chart we want to create
         type: 'bar',
@@ -17,7 +17,7 @@ getData.done(function(disj){
                 label: 'District',
                 fill: true,
                 borderWidth: 1,
-                backgroundColor: 'rgb(255, 0, 30)',
+                borderColor: 'rgb(255, 0, 30)',
                 backgroundColor: ["red", "blue", "green", "yellow", "pink","orange","purple","red", "blue", "green", "yellow", "pink","orange","purple"],
                 data: disj.a
             }]
@@ -46,5 +46,89 @@ getData.done(function(disj){
                 }]
              }
         }
+    });
+});
+
+var getData3 = $.get('/getChartData');
+getData3.done(function(data){
+    var ctxa = document.getElementById('a').getContext('2d');
+    var charta = new Chart(ctxa, {
+        // The type of chart we want to create
+        type: 'doughnut',
+        // The data for our dataset
+        data: {
+            labels: data.fIKeys,
+            datasets: [{
+                label: 'District',
+                fill: true,
+                borderWidth: 1,
+                backgroundColor: 'rgb(255, 0, 30)',
+                backgroundColor: ["red", "blue", "green", "yellow", "pink","orange","purple","red", "blue", "green", "yellow", "pink","orange","purple"],
+                data: data.fIvalues
+            }]
+        },
+
+        // Configuration options go here
+
+    });
+
+    var ctxb = document.getElementById('b').getContext('2d');
+    var chartb = new Chart(ctxb, {
+        // The type of chart we want to create
+        type: 'doughnut',
+        // The data for our dataset
+        data: {
+            labels: data.fIMKeys,
+            datasets: [{
+                label: 'District',
+                fill: true,
+                borderWidth: 1,
+                backgroundColor: 'rgb(255, 0, 30)',
+                backgroundColor: ["red", "blue", "green", "yellow", "pink","orange","purple","red", "blue", "green", "yellow", "pink","orange","purple"],
+                data: data.fIMValues
+            }]
+        },
+
+        // Configuration options go here
+
+    });
+
+    var ctxc = document.getElementById('c').getContext('2d');
+    var chartc = new Chart(ctxc, {
+        // The type of chart we want to create
+        type: 'doughnut',
+        // The data for our dataset
+        data: {
+            labels: data.uSKeys,
+            datasets: [{
+                label: 'District',
+                fill: true,
+                borderWidth: 1,
+                backgroundColor: 'rgb(255, 0, 30)',
+                backgroundColor: ["red", "blue", "green", "yellow", "pink","orange","purple","red", "blue", "green", "yellow", "pink","orange","purple"],
+                data: data.uSValues
+            }]
+        },
+
+    });
+
+    var ctxd = document.getElementById('d').getContext('2d');
+    var chartd = new Chart(ctxd, {
+        // The type of chart we want to create
+        type: 'doughnut',
+        // The data for our dataset
+        data: {
+            labels: data.uSMKeys,
+            datasets: [{
+                label: 'District',
+                fill: true,
+                borderWidth: 1,
+                backgroundColor: 'rgb(255, 0, 30)',
+                backgroundColor: ["red", "blue", "green", "yellow", "pink","orange","purple","red", "blue", "green", "yellow", "pink","orange","purple"],
+                data: data.uSMValues
+            }]
+        },
+
+        // Configuration options go here
     });
 });
