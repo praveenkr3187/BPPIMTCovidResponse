@@ -22,6 +22,10 @@ def index():
 def contact():
     return render_template('contacts.html')
 
+@app.route('/analysis')
+def analysis():
+    return render_template('analysis.html')
+
 @app.route('/favicon.ico')
 def favicon():
     return url_for('static', filename='favicon.ico')

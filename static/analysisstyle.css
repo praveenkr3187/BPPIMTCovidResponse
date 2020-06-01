@@ -67,16 +67,7 @@
     overflow: hidden;
   }
   
-  .headeroverlay{
-    height: 120vh;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background: #223222;
-    z-index: 1;
-    opacity: 0.35;
-  }
+  
   
   .headercontent{
     padding: 3rem;
@@ -91,6 +82,7 @@
       width: 100%;
       align-self: center;
       align-items: auto center;
+      z-index: 3;
   }
   
   .btn{
