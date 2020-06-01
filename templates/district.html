@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block title %}
+<title>NASA Space HAckathon</title>
+
+{% endblock %}
+{% block body %}
+
+
+
+  <section class="container">
+
+
+  <form action="/dis" method="POST">
+    <div class="form-group">
+      <label for="sel1">Select District:</label>
+      <select class="form-control" id="sel1" name="district">
+      </select>
+    </div>
+    <input type="submit">
+  </form>
+</div>
+
+</section>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="{{ url_for('static', filename='s2.js') }}"></script>
+{% endblock %}

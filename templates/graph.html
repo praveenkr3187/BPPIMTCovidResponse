@@ -1,0 +1,119 @@
+{% extends 'base.html' %}
+{% block title %}
+<title>NASA HAckathon Project</title>
+
+{% endblock %}
+
+{% block body %}
+<section class="border border-primary">
+<section class="container-fluid text-center bg-faded my-4">
+    This Chart is Population vs Confirmed Cases<br>
+    X-axis: Population<br>
+    Y-axis: Confirmed Cases
+</section>
+<section class="container">
+    <canvas id="popvsconf" ></canvas>
+</section>
+</section>
+
+<section class="border border-secondary">
+<section class="container-fluid text-center bg-faded my-4">
+    This Chart is Area vs Confirmed Cases<br>
+    X-axis: Area<br>
+    Y-axis: Confirmed Cases
+</section>
+<section class="container">
+    <canvas id="areavsconf" ></canvas>
+</section>
+</section>
+
+<section class="border border-success">
+<section class="container-fluid text-center bg-faded my-4">
+    This Chart is Density vs Confirmed Cases<br>
+    X-axis: Density<br>
+    Y-axis: Confirmed Cases
+</section>
+<section class="container">
+    <canvas id="denvsconf" ></canvas>
+</section>
+</section>
+
+<section class="border border-warning">
+<section class="container-fluid text-center bg-faded my-4">
+    This Chart is Active Cases vs Confirmed Cases<br>
+    X-axis: Active Cases<br>
+    Y-axis: Confirmed Cases
+</section>
+<section class="container">
+    <canvas id="actvsconf" ></canvas>
+</section>
+</section>
+
+<section class="border border-info">
+<section class="container-fluid text-center bg-faded my-4">
+    This Chart is Retail Mobility vs Confirmed Cases<br>
+    X-axis: Retail Mobility<br>
+    Y-axis: Confirmed Cases
+</section>
+<section class="container">
+    <canvas id="retvsconf" ></canvas>
+</section>
+</section>
+
+<section class="border border-light">
+<section class="container-fluid text-center bg-faded my-4">
+    This Chart is Grocery Mobility vs Confirmed Cases<br>
+    X-axis: Grocery Mobility<br>
+    Y-axis: Confirmed Cases
+</section>
+<section class="container">
+    <canvas id="grovsconf" ></canvas>
+</section>
+</section>
+
+<section class="border border-danger">
+<section class="container-fluid text-center bg-faded my-4">
+    This Chart is Parks Mobility vs Confirmed Cases<br>
+    X-axis: Parks Mobility<br>
+    Y-axis: Confirmed Cases
+</section>
+<section class="container">
+    <canvas id="parvsconf" ></canvas>
+</section>
+</section>
+
+<section class="border border-primary">
+<section class="container-fluid text-center bg-faded my-4">
+    This Chart is Stations vs Confirmed Cases<br>
+    X-axis: Station Mobility<br>
+    Y-axis: Confirmed Cases
+</section>
+<section class="container">
+    <canvas id="stavsconf" ></canvas>
+</section>
+</section>
+
+<section class="border border-success">
+<section class="container-fluid text-center bg-faded my-4">
+    Workplaces vs Confirmed Cases<br>
+    X-axis: Workplaces Nobility<br>
+    Y-axis: Confirmed Cases
+</section>
+<section class="container">
+    <canvas id="worvsconf" ></canvas>
+</section>
+</section>
+
+<section class="border border-success">
+<section class="container-fluid text-center bg-faded my-4">
+    Residential vs Confirmed Cases<br>
+    X-axis: Residential Mobility<br>
+    Y-axis: Confirmed Cases
+</section>
+<section class="container">
+    <canvas id="resvsconf" ></canvas>
+</section>
+</section>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+{% endblock %}

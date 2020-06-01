@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block title %}
+<title>NASA Space HAckathon</title>
+
+{% endblock %}
+{% block body %}
+
+<section class="border border-primary">
+    <section class="container-fluid text-center bg-faded my-4">
+        This is a Bar Graph of Selected District with diffrent index<br>
+    </section>
+    <section class="container">
+        <canvas id="disdis" ></canvas>
+    </section>
+    </section>
+
+<script src="{{ url_for('static', filename='s3.js') }}"></script>
+{% endblock %}
