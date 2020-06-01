@@ -18,6 +18,10 @@ app.secret_key='d7afcbc8d55d6266483a4d1f2b6ee8599e2543b45f3c4c2d'
 def index():
     return render_template('index.html')
 
+@app.route('/contact')
+def contact():
+    return render_template('contacts.html')
+
 @app.route('/favicon.ico')
 def favicon():
     return url_for('static', filename='favicon.ico')
