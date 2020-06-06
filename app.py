@@ -102,6 +102,12 @@ def district(df=dataframe2):
             a+=[rows.Density,rows.Workplaces,rows.Residential,rows.Retail,rows.Grocery,rows.Parks,rows.Stations,rows['Air quality'],rows['Water accessibility'],rows['Thermal anomalies'],rows.Confirmed,rows.Active]
     return render_template('district.html')
 
+@app.route('/state')
+def state(df=dataframe2):
+    states=list(df['State'])
+    states = list(dict.fromkeys(states))
+    return jsonify({'state' : states})
+
 @app.route('/disj')
 def disj(di=a):
     return jsonify({'a' : di})
