@@ -113,9 +113,13 @@ def disj(di=a):
     return jsonify({'a' : di})
 
 
-@app.route('/df2')
+@app.route('/df2',methods=['GET','POST'])
 def df2(df=dataframe2):
-    districts=list(df['District'])
+    if request.method == 'POST':
+        selstate= request.form['st']
+        d=df.loc[df['State'] == selstate]
+        print(d)
+        districts=list(d['District'])
     return jsonify({'district' : districts})
 
 @app.route('/graph')
