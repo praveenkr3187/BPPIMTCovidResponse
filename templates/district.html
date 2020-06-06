@@ -6,15 +6,22 @@
 {% block body %}
 
 <section class="container text-center py-5">
-  <form action="/district" method="POST">
+  <form class="mx-auto" style="max-width: 250px;">
+    <div class="form-group">
+      <label for="sel2">Select State:</label>
+      <select class="form-control" id="sel2" name="state">
+        <option value="Select">States</option>
+      </select>
+    </div>
+  </form>
+  <form class="mx-auto" style="max-width: 250px;">
     <div class="form-group">
       <label for="sel1">Select District:</label>
       <select class="form-control" id="sel1" name="district">
       </select>
     </div>
-    <input type="submit" class="btn btn-warning" value="Show">
+    <button type="button" class="btn btn-info" onclick="fung()">Show</button>
   </form>
-</div>
 </section>
 
 <section class="border border-primary">
