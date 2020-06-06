@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title>BPPIMT Covid Response</title>
+</head>
+
+<style>
+
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body{
+ background-color: black;
+ font-family: sans-serif;
+ margin: 0;
+ overflow-x: hidden;
+ line-height: 1.5;
+ margin: 0;
+ color: #333;
+ font-size: 1rem;
+}
+
+#plot1,#plot2,#plot3,#plot4,#plot5,#plot6{
+  display: none;
+  margin-left: auto;
+  margin-right: auto;
+  width: 60%;
+}
+/* for navbar */
+
+
+nav{
+  height: 10vh;
+  background: #071438;
+  z-index: 3;
+  position: relative;
+}
+
+.navlinks{
+  display: flex;
+  list-style: none;
+  width: 50%;
+  height: 100%;
+  justify-content: space-around;
+  align-items: center;
+  margin-left: auto;
+}
+
+
+.navlinks li a{
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.dropdowns{
+  display: flex;
+  margin: 2rem;
+  margin-left: 25rem;
+  justify-content: space-evenly;
+  height: 30px;
+}
+
+#bigScreen {
+  display:block;
+}
+#smallScreen {
+  display:none;
+}
+
+.description{
+  padding: 5rem;
+  color: white;
+  font-size: 16px;
+}
+
+
+@media(max-width:360px){
+  .dropdowns{
+    margin-left: 0;
+  }
+  .plotl{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    height: auto;
+  }
+  #bigScreen {
+    display:none;
+  }
+  #smallScreen {
+    display:block;
+  }
+  .line{
+    width: 20px;
+    height: 3px;
+    background: white;
+    margin: 5px;
+  }
+
+  nav{
+    position: relative;
+  }
+
+  .hamburger{
+    position: absolute;
+    cursor: pointer;
+    right: 5%;
+    translate: translate(-5%,-50%);
+    z-index: 3;
+  }
+  .navlinks{
+    position: fixed;
+    background: #0d1e4d;
+    height: 100vh;
+    width: 100%;
+    flex-direction: column;
+    clip-path: circle(100px at 90% -20%);
+    -webkit-clip-path:circle(100px at 90% -20%);
+    transition: all 1s ease-out;
+    pointer-events: none;
+  }
+  .navlinks.open{
+    clip-path: circle(1000px at 90% -20%);
+    -webkit-clip-path:circle(1000px at 90% -20%);
+    pointer-events: all;
+  }
+  .navlinks li{
+    opacity: 0;
+  }
+  .navlinks li:nth-child(0){transition: all 0.5s ease 0.2s;}
+  .navlinks li:nth-child(1){transition: all 0.5s ease 0.4s;}
+  .navlinks li:nth-child(2){transition: all 0.5s ease 0.6s;}
+  .navlinks li:nth-child(3){transition: all 0.5s ease 0.8s;}
+  li.fade{
+    opacity: 1;
+  }
+}
+</style>
+
+
+<body>
+    <nav>
+        <div class="hamburger">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+        </div>
+        <ul class="navlinks">
+            <li><a href="/">Home</a></li>
+            <li><a href="/#about">About</a></li>
+            <li><a href="/contact">Contact</a></li>
+            <li><a href="/analysis">Analysis</a></li>
+        </ul>
+    </nav>
+
+    <div class="dropdowns" >
+        <div class="container" >
+            <div  class="dropdown">
+              <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">{{name}}
+              <span class="caret"></span></button>
+              <ul class="dropdown-menu" style="max-height: 160px; height:auto; overflow-y: auto; scroll-behavior: auto;" >
+                <li><a href="/process/Andaman And Nicobar" class="w3-bar-item w3-button">Andaman And Nicobar</a></li>
+                <li><a href="/process/Andhra Pradesh" class="w3-bar-item w3-button">Andhra Pradesh</a></li>
+                <li><a href="/process/Arunachal Pradesh" class="w3-bar-item w3-button">Arunachal Pradesh</a></li>
+                <li><a href="/process/Assam" class="w3-bar-item w3-button">Assam</a></li>
+                <li><a href="/process/Bihar" class="w3-bar-item w3-button">Bihar</a></li>
+                <li><a href="/process/Chandigarh" class="w3-bar-item w3-button">Chandigarh</a></li>
+                <li><a href="/process/Chattisgarh" class="w3-bar-item w3-button">Chattisgarh</a></li>
+                <li><a href="/process/Daman And Deu" class="w3-bar-item w3-button">Daman And Deu</a></li>
+                <li><a href="/process/Delhi" class="w3-bar-item w3-button">Delhi</a></li>
+                <li><a href="/process/Dadra And Nagar Haveli" class="w3-bar-item w3-button">Dadra And Nagar Haveli</a></li>
+                <li><a href="/process/Goa" class="w3-bar-item w3-button">Goa</a></li>
+                <li><a href="/process/Gujrat" class="w3-bar-item w3-button">Gujrat</a></li>
+                <li><a href="/process/Himachal Pradesh" class="w3-bar-item w3-button">Himachal Pradesh</a></li>
+                <li><a href="/process/Harayana" class="w3-bar-item w3-button">Harayana</a></li>
+                <li><a href="/process/Jharkhand" class="w3-bar-item w3-button">Jharkhand</a></li>
+                <li><a href="/process/Jammu And Kashmir" class="w3-bar-item w3-button">Jammu And Kashmir</a></li>
+                <li><a href="/process/Karnataka" class="w3-bar-item w3-button">Karnataka</a></li>
+                <li><a href="/process/Kerala" class="w3-bar-item w3-button">Kerala</a></li>
+                <li><a href="/process/Ladakh" class="w3-bar-item w3-button">Ladakh</a></li>
+                <li><a href="/process/Lakshadweep" class="w3-bar-item w3-button">Lakshadweep</a></li>
+                <li><a href="/process/Maharashtra" class="w3-bar-item w3-button">Maharashtra</a></li>
+                <li><a href="/process/Meghalaya" class="w3-bar-item w3-button">Meghalaya</a></li>
+                <li><a href="/process/Manipur" class="w3-bar-item w3-button">Manipur</a></li>
+                <li><a href="/process/Madhya Pradesh" class="w3-bar-item w3-button">Madhya Pradesh</a></li>
+                <li><a href="/process/Mizoram" class="w3-bar-item w3-button">Mizoram</a></li>
+                <li><a href="/process/Nagaland" class="w3-bar-item w3-button">Nagaland</a></li>
+                <li><a href="/process/Orissa" class="w3-bar-item w3-button">Orissa</a></li>
+                <li><a href="/process/Punjab" class="w3-bar-item w3-button">Punjab</a></li>
+                <li><a href="/process/Puducherry" class="w3-bar-item w3-button">Puducherry</a></li>
+                <li><a href="/process/Rajasthan" class="w3-bar-item w3-button">Rajasthan</a></li>
+                <li><a href="/process/Sikkim" class="w3-bar-item w3-button">Sikkim</a></li>
+                <li><a href="/process/Telengana" class="w3-bar-item w3-button">Telengana</a></li>
+                <li><a href="/process/Tamilnadu" class="w3-bar-item w3-button">Tamilnadu</a></li>
+                <li><a href="/process/Tripura" class="w3-bar-item w3-button">Tripura</a></li>
+                <li><a href="/process/Uttar Pradesh" class="w3-bar-item w3-button">Uttar Pradesh</a></li>
+                <li><a href="/process/Uttarakhand" class="w3-bar-item w3-button">Uttarakhand</a></li>
+                <li><a href="/process/West Bengal" class="w3-bar-item w3-button">West Bengal</a></li>
+            </ul>
+            </div>
+          </div>
+          <div class="container" id="bigScreen" >
+            <div class="dropdown">
+              <button class="btn  btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Select plot
+              <span class="caret"></span></button>
+              <ul class="dropdown-menu" >
+                <li><a href="javascript:plot(1)" class="w3-bar-item w3-button">Time series of confirmed</a></li>
+                <li><a href="javascript:plot(2)" class="w3-bar-item w3-button">Components of confirmed</a> </li>
+                <li><a href="javascript:plot(3)" class="w3-bar-item w3-button">Time series of recovered</a></li>
+                <li><a href="javascript:plot(4)" class="w3-bar-item w3-button">Components of recovered</a> </li>
+                <li><a href="javascript:plot(5)" class="w3-bar-item w3-button">Time series of death</a></li>
+                <li><a href="javascript:plot(6)" class="w3-bar-item w3-button">Components of death</a> </li>
+              </ul>
+            </div>
+          </div>
+          <div class="container" id="smallScreen">
+            <div class="dropdown">
+              <button class="btn  btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Select plot
+              <span class="caret"></span></button>
+              <ul class="dropdown-menu dropdown-menu-right" >
+                <li><a href="javascript:plot(1)" class="w3-bar-item w3-button">Time series of confirmed</a></li>
+                <li><a href="javascript:plot(2)" class="w3-bar-item w3-button">Components of confirmed</a> </li>
+                <li><a href="javascript:plot(3)" class="w3-bar-item w3-button">Time series of recovered</a></li>
+                <li><a href="javascript:plot(4)" class="w3-bar-item w3-button">Components of recovered</a> </li>
+                <li><a href="javascript:plot(5)" class="w3-bar-item w3-button">Time series of death</a></li>
+                <li><a href="javascript:plot(6)" class="w3-bar-item w3-button">Components of death</a> </li>
+              </ul>
+            </div>
+          </div>
+    </div>
+    <div style="color: white; display: flex; justify-content: space-around; margin-bottom: 2rem;">
+      <h3>confirmed: {{confirmed}}</h3>  
+      <h3>recovered: {{recovered}} </h3>  
+      <h3>deaths: {{deaths}}</h3>
+    </div>
+
+    <a href="{{url_for('static',filename='')}}{{src1}}"><img src="{{url_for('static',filename='')}}{{src1}}" id="plot1"> </a>     
+    <a href="{{url_for('static',filename='')}}{{src2}}"><img src="{{url_for('static',filename='')}}{{src2}}" id="plot2"> </a>   
+    <a href="{{url_for('static',filename='')}}{{src3}}"><img src="{{url_for('static',filename='')}}{{src3}}" id="plot3"> </a>   
+    <a href="{{url_for('static',filename='')}}{{src4}}"><img src="{{url_for('static',filename='')}}{{src4}}" id="plot4"> </a>   
+    <a href="{{url_for('static',filename='')}}{{src5}}"><img src="{{url_for('static',filename='')}}{{src5}}" id="plot5"> </a>   
+    <a href="{{url_for('static',filename='')}}{{src6}}"><img src="{{url_for('static',filename='')}}{{src6}}" id="plot6"> </a>   
+    
+    <div class="description">
+        <h1 id="descHead"></h1>
+        <p id="desc">
+        </p>
+    </div>
+    <!-- <div class="description">
+        <h1>Components of Time Series Analysis</h1>
+        <p>
+            Components are of four types: Seasonality, Cycle, Trend and Irregular. Trend shows the plot without taking the "seasons" into account.
+        </p>
+    </div>
+     -->
+
+</body>
+<script>
+const hamburger = document.querySelector(".hamburger");
+const navlinks = document.querySelector(".navlinks");
+const links = document.querySelectorAll(".navlinks li");
+
+hamburger.addEventListener("click",()=>{
+    navlinks.classList.toggle("open");
+    links.forEach(link =>{
+        link.classList.toggle("fade");
+    });
+});
+
+ function plot(num){
+     if(num==1){
+        document.getElementById("plot1").style.display = 'block';
+        document.getElementById("plot2").style.display = 'none';
+        document.getElementById("plot3").style.display = 'none';
+        document.getElementById("plot4").style.display = 'none';
+        document.getElementById("plot5").style.display = 'none';
+        document.getElementById("plot6").style.display = 'none';
+        document.getElementById("descHead").innerHTML = "Time series analysis";
+        document.getElementById("desc").innerHTML = "Time series forecasting is the use of a time series model to predict future values based on previously observed values in the series. Seasonality is taken into account.";
+     } 
+     if(num==2){
+        document.getElementById("plot1").style.display = 'none';
+        document.getElementById("plot2").style.display = 'block';
+        document.getElementById("plot3").style.display = 'none';
+        document.getElementById("plot4").style.display = 'none';
+        document.getElementById("plot5").style.display = 'none';
+        document.getElementById("plot6").style.display = 'none';
+        document.getElementById("descHead").innerHTML = "Components of Time Series Analysis";
+        document.getElementById("desc").innerHTML = "Components are of four types: Seasonality, Cycle, Trend and Irregular. Trend shows the plot without taking the seasons into account.";
+     } 
+     if(num==3){
+        document.getElementById("plot1").style.display = 'none';
+        document.getElementById("plot2").style.display = 'none';
+        document.getElementById("plot3").style.display = 'block';
+        document.getElementById("plot4").style.display = 'none';
+        document.getElementById("plot5").style.display = 'none';
+        document.getElementById("plot6").style.display = 'none';
+        document.getElementById("descHead").innerHTML = "Time series analysis";
+        document.getElementById("desc").innerHTML = "Time series forecasting is the use of a time series model to predict future values based on previously observed values in the series. Seasonality is taken into account.";
+    
+     } 
+     if(num==4){
+        document.getElementById("plot1").style.display = 'none';
+        document.getElementById("plot2").style.display = 'none';
+        document.getElementById("plot3").style.display = 'none';
+        document.getElementById("plot4").style.display = 'block';
+        document.getElementById("plot5").style.display = 'none';
+        document.getElementById("plot6").style.display = 'none';
+        document.getElementById("descHead").innerHTML = "Components of Time Series Analysis";
+        document.getElementById("desc").innerHTML = "Components are of four types: Seasonality, Cycle, Trend and Irregular. Trend shows the plot without taking the seasons into account.";
+ 
+     }
+     if(num==5){
+        document.getElementById("plot1").style.display = 'none';
+        document.getElementById("plot2").style.display = 'none';
+        document.getElementById("plot3").style.display = 'none';
+        document.getElementById("plot4").style.display = 'none';
+        document.getElementById("plot5").style.display = 'block';
+        document.getElementById("plot6").style.display = 'none';
+        document.getElementById("descHead").innerHTML = "Time series analysis";
+        document.getElementById("desc").innerHTML = "Time series forecasting is the use of a time series model to predict future values based on previously observed values in the series. Seasonality is taken into account.";
+     } 
+     if(num==6){
+        document.getElementById("plot1").style.display = 'none';
+        document.getElementById("plot2").style.display = 'none';
+        document.getElementById("plot3").style.display = 'none';
+        document.getElementById("plot4").style.display = 'none';
+        document.getElementById("plot5").style.display = 'none';
+        document.getElementById("plot6").style.display = 'block';
+        document.getElementById("descHead").innerHTML = "Components of Time Series Analysis";
+        document.getElementById("desc").innerHTML = "Components are of four types: Seasonality, Cycle, Trend and Irregular. Trend shows the plot without taking the seasons into account.";
+ 
+     } 
+
+ }
+</script>
+</html>

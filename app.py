@@ -1,7 +1,7 @@
 from flask import Flask, render_template, url_for, request, session, redirect, g, jsonify
 from random import sample
 import pandas as pd
-
+import time
 dataframe=pd.read_csv("dataset.csv")
 dataframe=dataframe.sort_values(by='Confirmed')
 for _ in range(6):
@@ -14,10 +14,62 @@ dataframe2=pd.read_csv("dataset2.csv")
 app = Flask(__name__)
 app.secret_key='d7afcbc8d55d6266483a4d1f2b6ee8599e2543b45f3c4c2d'
 
+def stateCases(state):
+    try:
+        p = pd.read_csv('./Datasets/Confirmed.csv')
+        x = p[p['Unnamed: 0']==state]
+        p = list(x)[-1]
+        r = list(x[p])
+        confirmed = r[0]
+        p = pd.read_csv('./Datasets/Recovered.csv')
+        x = p[p['Unnamed: 0']==state.upper()]
+        p = list(x)[-1]
+        r = list(x[p])
+        recovered = r[0]
+        p = pd.read_csv('./Datasets/Deceased.csv')
+        x = p[p['Unnamed: 0']==state.upper()]
+        p = list(x)[-1]
+        r = list(x[p])
+        deaths = r[0]
+    except:
+        print("error",r)
+        return 0,0,0
+    return confirmed, deaths, recovered
+
+
+
 @app.route('/')
 def index():
     return render_template('index.html')
-
+    
+@app.route('/process/<name>')
+def message(name):
+    temp = name
+    key = time.time()
+    key = str(key)
+    if temp == 'India':
+        src1 = f'content/Images_India/india_confirm.png?{key}'
+        src2 = f'content/Images_India/India_confirm_components.png?{key}'
+        src3 = f'content/Images_India/india_deceased_seasonalities.png?{key}'
+        src4 = f'content/Images_India/India_deceased_components.png?{time.time()}'
+        src5 = f'content/Images_India/india_recovered_seasonalities.png?{key}'
+        src6 = f'content/Images_India/India_recovered_components.png?{key}'
+        src7 = f'content/Images_India/India_confirmed_trend.png?{key}'
+        src8 = f'content/Images_India/India_deaths_trend.png?{key}'
+        src9 = f'content/Images_India/India_recovered_trend.png?{key}'
+    else:
+        src1 = f'content/Images_Confirmed/{name}_seasonality.png?{key}'
+        src2 = f'content/Images_Confirmed/{name}_components.png?{key}'
+        src3 = f'content/Images_Death/{name.upper()}_seasonalities.png?{key}'
+        src4 = f'content/Images_Death/{name.upper()}_components.png?{key}'
+        src5 = f'content/Images_Recovered/{name.upper()}.png?{key}'
+        src6 = f'content/Images_Recovered/{name.upper()}_components.png?{key}'
+        src7 = f'content/Images_statewise_confirmed_plot/{name}_mean.png?{key}'
+        src8 = f'content/Images_statewise_deaths_plot/{name.upper()}_deathtrend.png?{key}'
+        src9 = f'content/Images_statewise_recovered_plot/{name.upper()}_normal.png?{key}'
+    confirmed, deaths, recovered = stateCases(name)
+    return render_template('newPlot.html',name=name,src1=src1,src2=src2,src3=src3,src4=src4,src5=src5,src6=src6,src7=src7,src8=src8,src9=src9,confirmed=confirmed,deaths=deaths,recovered=recovered)
+    
 @app.route('/contact')
 def contact():
     return render_template('contacts.html')
@@ -29,6 +81,10 @@ def analysis():
 @app.route('/regression')
 def regression():
     return "this page is coming soon"
+
+@app.route('/redplots')
+def red():
+    return redirect('http://localhost:5000/process/India',code=301)
 
 @app.route('/favicon.ico')
 def favicon():
@@ -152,4 +208,4 @@ def getChartData():
     
 
 if __name__ == '__main__':
-    app.run(debug=False)
+    app.run(debug=True)

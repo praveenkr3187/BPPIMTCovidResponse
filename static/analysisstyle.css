@@ -67,20 +67,23 @@
     overflow: hidden;
   }
   
-  
+  .headeroverlay{
+    margin-top: 0;
+  }
   
   .headercontent{
-    padding: 3rem;
+    padding: 2rem;
     z-index: 2;
   }
   
   
 
-
+  
   .buttons{
-      height: 80vh;
-    
+      height: 70vh;
       z-index: 3;
+      margin-left: auto;
+      margin-right: auto;
   }
   
   .btn{
