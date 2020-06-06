@@ -2,6 +2,11 @@ from flask import Flask, render_template, url_for, request, session, redirect, g
 from random import sample
 import pandas as pd
 import time
+
+resp.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
+resp.headers["Pragma"] = "no-cache"
+resp.headers["Expires"] = "0"
+
 dataframe=pd.read_csv("dataset.csv")
 dataframe=dataframe.sort_values(by='Confirmed')
 for _ in range(6):
