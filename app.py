@@ -3,6 +3,11 @@ from random import sample
 import pandas as pd
 import time
 
+from createCSV import results
+from createCSV2 import answer
+from createCSV3 import solution
+from graphs import sol
+
 dataframe=pd.read_csv("dataset.csv")
 dataframe=dataframe.sort_values(by='Confirmed')
 for _ in range(6):
@@ -69,7 +74,7 @@ def message(name):
         src8 = f'content/Images_statewise_deaths_plot/{name.upper()}_deathtrend.png?{key}'
         src9 = f'content/Images_statewise_recovered_plot/{name.upper()}_normal.png?{key}'
     confirmed, deaths, recovered = stateCases(name)
-    return render_template('newPlot.html',name=name,src1=src1,src2=src2,src3=src3,src4=src4,src5=src5,src6=src6,src7=src7,src8=src8,src9=src9,confirmed=confirmed,deaths=deaths,recovered=recovered)
+    return render_template('newPlot.html',name=name,src1=src1,src2=src2,src3=src3,src4=src4,src5=src5,src6=src6,src7=src7,src8=src8,src9=src9,confirmed=confirmed,deaths=deaths,recovered=recovered,active=confirmed-recovered-deaths)
     
 @app.route('/contact')
 def contact():
@@ -217,6 +222,15 @@ def getChartData():
     uSMValues = [0.09273469257182483,23.506595629105053,1.2686150850584141,2.8919863541195197,0.1988008603787625,2.8880402443913873]
     return jsonify({'fIKeys' : fIKeys,'fIvalues' : fIvalues,'fIMKeys' : fIMKeys,'fIMValues' : fIMValues,'uSKeys' : uSKeys,'uSValues' : uSValues,'uSMKeys' : uSMKeys,'uSMValues' : uSMValues})
     
+#adding updation part
+@app.route('/update')
+def fetchDaily():
+    print('genereating results')
+    results()
+    answer()
+    solution()
+    sol()
+    return 'data updated'
 
 if __name__ == '__main__':
     app.run(debug=True)
