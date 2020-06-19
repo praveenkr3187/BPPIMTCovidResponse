@@ -2,6 +2,8 @@ from flask import Flask, render_template, url_for, request, session, redirect, g
 from random import sample
 import pandas as pd
 import time
+from flaskthreads import AppContextThread
+
 
 from createCSV import results
 from createCSV2 import answer
@@ -223,13 +225,17 @@ def getChartData():
     return jsonify({'fIKeys' : fIKeys,'fIvalues' : fIvalues,'fIMKeys' : fIMKeys,'fIMValues' : fIMValues,'uSKeys' : uSKeys,'uSValues' : uSValues,'uSMKeys' : uSMKeys,'uSMValues' : uSMValues})
     
 #adding updation part
-@app.route('/update')
 def fetchDaily():
     print('genereating results')
     results()
     answer()
     solution()
     sol()
+
+@app.route('/update')
+def update():
+    t = AppContextThread(target=fetchDaily)
+    t.start()
     return 'data updated'
 
 if __name__ == '__main__':
