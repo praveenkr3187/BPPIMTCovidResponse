@@ -213,7 +213,7 @@ nav{
           </div>
           <div class="container" id="bigScreen" >
             <div class="dropdown">
-              <button class="btn  btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Select plot
+              <button id="plot-dropdown" class="btn  btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Select plot
               <span class="caret"></span></button>
               <ul class="dropdown-menu" >
                 <li><a href="javascript:plot(1)" class="w3-bar-item w3-button">Time series of confirmed</a></li>
@@ -289,6 +289,7 @@ hamburger.addEventListener("click",()=>{
         document.getElementById("plot5").style.display = 'none';
         document.getElementById("plot6").style.display = 'none';
         document.getElementById("descHead").innerHTML = "Time series analysis";
+        document.getElementById("plot-dropdown").innerHTML = "Time series of confirmed";
         document.getElementById("desc").innerHTML = "Time series forecasting is the use of a time series model to predict future values based on previously observed values in the series. Seasonality is taken into account.";
      } 
      if(num==2){
@@ -299,6 +300,7 @@ hamburger.addEventListener("click",()=>{
         document.getElementById("plot5").style.display = 'none';
         document.getElementById("plot6").style.display = 'none';
         document.getElementById("descHead").innerHTML = "Components of Time Series Analysis";
+        document.getElementById("plot-dropdown").innerHTML = "Components of confirmed";
         document.getElementById("desc").innerHTML = "Components are of four types: Seasonality, Cycle, Trend and Irregular. Trend shows the plot without taking the seasons into account.";
      } 
      if(num==3){
@@ -309,6 +311,7 @@ hamburger.addEventListener("click",()=>{
         document.getElementById("plot5").style.display = 'none';
         document.getElementById("plot6").style.display = 'none';
         document.getElementById("descHead").innerHTML = "Time series analysis";
+        document.getElementById("plot-dropdown").innerHTML = "Time series of recovered";
         document.getElementById("desc").innerHTML = "Time series forecasting is the use of a time series model to predict future values based on previously observed values in the series. Seasonality is taken into account.";
     
      } 
@@ -320,6 +323,7 @@ hamburger.addEventListener("click",()=>{
         document.getElementById("plot5").style.display = 'none';
         document.getElementById("plot6").style.display = 'none';
         document.getElementById("descHead").innerHTML = "Components of Time Series Analysis";
+        document.getElementById("plot-dropdown").innerHTML = "Components of recovered";
         document.getElementById("desc").innerHTML = "Components are of four types: Seasonality, Cycle, Trend and Irregular. Trend shows the plot without taking the seasons into account.";
  
      }
@@ -331,6 +335,7 @@ hamburger.addEventListener("click",()=>{
         document.getElementById("plot5").style.display = 'block';
         document.getElementById("plot6").style.display = 'none';
         document.getElementById("descHead").innerHTML = "Time series analysis";
+        document.getElementById("plot-dropdown").innerHTML = "Time series of death";
         document.getElementById("desc").innerHTML = "Time series forecasting is the use of a time series model to predict future values based on previously observed values in the series. Seasonality is taken into account.";
      } 
      if(num==6){
@@ -341,6 +346,7 @@ hamburger.addEventListener("click",()=>{
         document.getElementById("plot5").style.display = 'none';
         document.getElementById("plot6").style.display = 'block';
         document.getElementById("descHead").innerHTML = "Components of Time Series Analysis";
+        document.getElementById("plot-dropdown").innerHTML = "Components of death";
         document.getElementById("desc").innerHTML = "Components are of four types: Seasonality, Cycle, Trend and Irregular. Trend shows the plot without taking the seasons into account.";
  
      } 
