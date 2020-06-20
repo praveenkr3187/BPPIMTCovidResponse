@@ -2,13 +2,6 @@ from flask import Flask, render_template, url_for, request, session, redirect, g
 from random import sample
 import pandas as pd
 import time
-from flaskthreads import AppContextThread
-
-
-from createCSV import results
-from createCSV2 import answer
-from createCSV3 import solution
-from graphs import sol
 
 dataframe=pd.read_csv("dataset.csv")
 dataframe=dataframe.sort_values(by='Confirmed')
@@ -224,19 +217,6 @@ def getChartData():
     uSMValues = [0.09273469257182483,23.506595629105053,1.2686150850584141,2.8919863541195197,0.1988008603787625,2.8880402443913873]
     return jsonify({'fIKeys' : fIKeys,'fIvalues' : fIvalues,'fIMKeys' : fIMKeys,'fIMValues' : fIMValues,'uSKeys' : uSKeys,'uSValues' : uSValues,'uSMKeys' : uSMKeys,'uSMValues' : uSMValues})
     
-#adding updation part
-def fetchDaily():
-    print('genereating results')
-    results()
-    answer()
-    solution()
-    sol()
-
-@app.route('/update')
-def update():
-    t = AppContextThread(target=fetchDaily)
-    t.start()
-    return 'data updated'
 
 if __name__ == '__main__':
     app.run(debug=True)
